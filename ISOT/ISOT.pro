@@ -13,9 +13,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    cube.cpp \
+    etage.cpp \
+    monde.cpp
 
 HEADERS  += mainwindow.h \
-    defines.h
+    defines.h \
+    cube.h \
+    etage.h \
+    monde.h
 
 FORMS    +=

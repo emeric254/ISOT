@@ -11,9 +11,25 @@ if not pygame.mixer:
     print('Warning, sound disabled')
 
 
+def load_image(name, colorkey=None):
+    fullname = os.path.join('data', name)
+    try:
+        image = pygame.image.load(fullname)
+    except pygame.error:
+        print 'Cannot load image:', name
+        raise SystemExit
+    image = image.convert()
+    if colorkey is not None:
+        if colorkey is -1:
+            colorkey = image.get_at((0, 0))
+        image.set_colorkey(colorkey, RLEACCEL)
+    return image, image.get_rect()
+
+
 class PyGameMain:
     """The Main PyMan Class - This class handles the main initialization and creating of the Game."""
-    def __init__(self, width=640,height=480):
+
+    def __init__(self, width=640, height=480):
         """Initialize"""
         """Initialize PyGame"""
         pygame.init()

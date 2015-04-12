@@ -43,7 +43,7 @@ def load_sound(name):
 class PyGameMain:
     """The Main PyMan Class - This class handles the main initialization and creating of the Game."""
 
-    def __init__(self, width=640, height=480):
+    def __init__(self, width=800, height=600):
         """Initialize"""
         """Initialize PyGame"""
         pygame.init()
@@ -55,26 +55,35 @@ class PyGameMain:
 
         background = [
             [
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)]
+                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
+                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
+                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
+                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)]
             ],
             [
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)]
+                [load_image("cube.png", -1), 0, 0, load_image("cube.png", -1)],
+                [],
+                [],
+                [load_image("cube.png", -1)]
+            ],[
+                [load_image("cube.png", -1), 0, 0, load_image("cube.png", -1)],
+                [],
+                [],
+                [load_image("cube.png", -1)]
             ],
             [
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)]
+                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
+                [load_image("cube.png", -1)],
+                [load_image("cube.png", -1)],
+                [load_image("cube.png", -1)]
             ]
         ]
 
         for z in range(len(background)):
             for y in range(len(background[z])):
                 for x in range(len(background[z][y])):
-                    self.screen.blit(background[z][y][x], (140 * 1/2 * (x-y +3), 140 * 1/4 * (x+y-z*2 +3)))
+                    if isinstance(background[z][y][x], pygame.Surface):
+                        self.screen.blit(background[z][y][x], (140 * 1/2 * (x-y + 4.5), 140 * 1/4 * (x+y-z*2 + 6)))
 
     def main_loop(self):
         """This is the Main Loop of the Game"""

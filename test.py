@@ -65,7 +65,8 @@ class PyGameMain:
                 [],
                 [],
                 [load_image("cube.png", -1)]
-            ],[
+            ],
+            [
                 [load_image("cube.png", -1), 0, 0, load_image("cube.png", -1)],
                 [],
                 [],

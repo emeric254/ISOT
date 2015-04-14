@@ -3,7 +3,6 @@ __author__ = 'toast254'
 import os
 import sys
 import pygame
-from pygame.locals import *
 
 if not pygame.font:
     print('Warning, fonts disabled')
@@ -15,14 +14,14 @@ def load_image(name, colorkey=None):
     fullname = os.path.join('Images', name)
     try:
         image = pygame.image.load(fullname)
-    except pygame.error:
+    except pygame.geterror():
         print("Cannot load image:" + name)
         raise SystemExit
     image = image.convert()
     if colorkey is not None:
         if colorkey is -1:
             colorkey = image.get_at((0, 0))
-        image.set_colorkey(colorkey, RLEACCEL)
+        image.set_colorkey(colorkey)
     return image
 
 
@@ -34,7 +33,7 @@ def load_sound(name):
     fullname = os.path.join('Sons', name)
     try:
         sound = pygame.mixer.Sound(fullname)
-    except pygame.error:
+    except pygame.geterror():
         print('Cannot load sound:' + name)
         raise SystemExit
     return sound
@@ -45,8 +44,10 @@ class PyGameMain:
 
     def __init__(self, width=800, height=600):
         """Initialize"""
+
         """Initialize PyGame"""
         pygame.init()
+
         """Set the window Size"""
         self.width = width
         self.height = height
@@ -92,6 +93,7 @@ class PyGameMain:
             pygame.display.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
+                    print("quit")
                     sys.exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     print("mouse pressed")

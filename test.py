@@ -1,42 +1,13 @@
 __author__ = 'toast254'
 
-import os
 import sys
 import pygame
+from Data import Utils
 
 if not pygame.font:
     print('Warning, fonts disabled')
 if not pygame.mixer:
     print('Warning, sound disabled')
-
-
-def load_image(name, colorkey=None):
-    fullname = os.path.join('Images', name)
-    try:
-        image = pygame.image.load(fullname)
-    except pygame.geterror():
-        print("Cannot load image:" + name)
-        raise SystemExit
-    image = image.convert()
-    if colorkey is not None:
-        if colorkey is -1:
-            colorkey = image.get_at((0, 0))
-        image.set_colorkey(colorkey)
-    return image
-
-
-def load_sound(name):
-    class NoneSound:
-        def play(self): pass
-    if not pygame.mixer:
-        return NoneSound()
-    fullname = os.path.join('Sons', name)
-    try:
-        sound = pygame.mixer.Sound(fullname)
-    except pygame.geterror():
-        print('Cannot load sound:' + name)
-        raise SystemExit
-    return sound
 
 
 class PyGameMain:
@@ -56,28 +27,28 @@ class PyGameMain:
 
         background = [
             [
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)]
+                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)]
             ],
             [
-                [load_image("cube.png", -1), 0, 0, load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1), 0, 0, Utils.load_image("cube.png", -1)],
                 [],
                 [],
-                [load_image("cube.png", -1)]
+                [Utils.load_image("cube.png", -1)]
             ],
             [
-                [load_image("cube.png", -1), 0, 0, load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1), 0, 0, Utils.load_image("cube.png", -1)],
                 [],
                 [],
-                [load_image("cube.png", -1)]
+                [Utils.load_image("cube.png", -1)]
             ],
             [
-                [load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1), load_image("cube.png", -1)],
-                [load_image("cube.png", -1)],
-                [load_image("cube.png", -1)],
-                [load_image("cube.png", -1)]
+                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1)],
+                [Utils.load_image("cube.png", -1)]
             ]
         ]
 

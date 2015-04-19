@@ -2,7 +2,7 @@ __author__ = 'toast254'
 
 import sys
 import pygame
-from Data import Utils
+from Data import Map
 
 if not pygame.font:
     print('Warning, fonts disabled')
@@ -25,38 +25,12 @@ class PyGameMain:
         """Create the Screen"""
         self.screen = pygame.display.set_mode((self.width, self.height))
 
-        background = [
-            [
-                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
-                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
-                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
-                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)]
-            ],
-            [
-                [Utils.load_image("cube.png", -1), 0, 0, Utils.load_image("cube.png", -1)],
-                [],
-                [],
-                [Utils.load_image("cube.png", -1)]
-            ],
-            [
-                [Utils.load_image("cube.png", -1), 0, 0, Utils.load_image("cube.png", -1)],
-                [],
-                [],
-                [Utils.load_image("cube.png", -1)]
-            ],
-            [
-                [Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1), Utils.load_image("cube.png", -1)],
-                [Utils.load_image("cube.png", -1)],
-                [Utils.load_image("cube.png", -1)],
-                [Utils.load_image("cube.png", -1)]
-            ]
-        ]
-
-        for z in range(len(background)):
-            for y in range(len(background[z])):
-                for x in range(len(background[z][y])):
-                    if isinstance(background[z][y][x], pygame.Surface):
-                        self.screen.blit(background[z][y][x], (140 * 1/2 * (x-y + 4.5), 140 * 1/4 * (x+y-z*2 + 6)))
+        bak = Map.Map()
+        for z in range(len(bak)):
+            for y in range(len(bak.carte[z])):
+                for x in range(len(bak.carte[z][y])):
+                    if isinstance(bak.carte[z][y][x], pygame.Surface):
+                        self.screen.blit(bak.carte[z][y][x], (140 * 1/2 * (x-y + 4.5), 140 * 1/4 * (x+y-z*2 + 6)))
 
     def main_loop(self):
         """This is the Main Loop of the Game"""

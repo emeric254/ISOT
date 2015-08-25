@@ -1,8 +1,17 @@
 ISOT
 ====
 
+Soit une matrice 3D de cases (X, Y, Z) de taille T
+
+Position 2D (x et y)
 ```
-position 2D (x et y) de cases selon leur position 3D (X, Y et Z)
-x = TAILLE * 1/2 * ( X - Y + OFFSET )
-y = TAILLE * 1/4 * ( X + Y - Z*2 + OFFSET)
+x = X * T + (Y % 2) * T / 2
+y = Y * T / 4 + Z * T / 2
+```
+
+Position 3D naturelle (x, y et z)
+```
+x = Y % 2 + Y / 2 + X
+y = Y / 2 + X
+z = Z
 ```

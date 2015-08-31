@@ -2,7 +2,9 @@
 -- 
 
 function love.load ()
-	image = love.graphics.newImage("test.png")
+	OFFSETX = 256
+	OFFSETY = 256
+	image = love.graphics.newImage("assets/test.png")
 end
 
 function love.update()
@@ -13,11 +15,13 @@ function love.update()
 end
 
 function love.draw()
-	for j = 0, 5 do
-		for i = 0, 5 do
-			x = i * 64 + (j % 2) * 64 / 2
-			y = j * 64 / 4
-			love.graphics.draw(image, x, y)
+	for Z = 0, 5 do
+		for Y = 0, 10 do
+			for X = 0, 5 do
+				x = X * 64 + (Y % 2) * 64 / 2 + OFFSETX
+				y = Y * 64 / 4 - Z * 64 / 2 + OFFSETY
+				love.graphics.draw(image, x, y)
+			end
 		end
 	end
 end

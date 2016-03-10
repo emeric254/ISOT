@@ -15,16 +15,15 @@ class PyGameMain:
 
     def __init__(self, width=800, height=600):
         """Initialize"""
-
-        """Initialize PyGame"""
+        #
+        # Initialize PyGame
         pygame.init()
-
-        """Set the window Size"""
+        # Set the window Size
         self.width = width
         self.height = height
-        """Create the Screen"""
+        # Create the Screen
         self.screen = pygame.display.set_mode((self.width, self.height))
-
+        #
         bak = Map.Map()
         for z in range(len(bak)):
             for y in range(len(bak.carte[z])):
@@ -32,8 +31,10 @@ class PyGameMain:
                     if isinstance(bak.carte[z][y][x], pygame.Surface):
                         self.screen.blit(bak.carte[z][y][x], (140 * 1/2 * (x-y + 4.5), 140 * 1/4 * (x+y-z*2 + 6)))
 
+    @classmethod
     def main_loop(self):
         """This is the Main Loop of the Game"""
+        #
         while 1:
             pygame.display.update()
             for event in pygame.event.get():

@@ -19,7 +19,8 @@ def load_image(name, colorkey=None):
 
 def load_sound(name):
     class NoneSound:
-        def play(self): pass
+        def play(self):
+            pass
     if not pygame.mixer:
         return NoneSound()
     fullname = os.path.join('Sons', name)
